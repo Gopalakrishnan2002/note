@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Resume</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #333;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: #555;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 60px auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+        }
+
+        .resume-options {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .option {
+            flex: 1;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            border: 2px solid transparent;
+        }
+
+        .option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .option.active {
+            border-color: #007bff;
+            background: #fff;
+        }
+
+        .option i {
+            font-size: 2rem;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        .option h3 {
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .resume-content {
+            margin-top: 30px;
+        }
+
+        .resume-view {
+            display: none;
+        }
+
+        .resume-view.active {
+            display: block;
+        }
+
+        .resume-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .resume-pdf {
+            width: 100%;
+            height: 800px;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .download-button {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 30px;
+            transition: background 0.3s;
+            font-weight: 500;
+        }
+
+        .download-button:hover {
+            background: #0056b3;
+        }
+
+        .download-button i {
+            margin-right: 8px;
+        }
+
+        .buttons-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .resume-options {
+                flex-direction: column;
+            }
+
+            .container {
+                margin: 20px auto;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .resume-pdf {
+                height: 500px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        Back to Portfolio
+    </a>
+
+    <div class="container">
+        <h1>My Resume</h1>
+
+        <div class="resume-options">
+            <div class="option active" onclick="switchView('pdf')">
+                <i class="fas fa-file-pdf"></i>
+                <h3>PDF Version</h3>
+                <p>View interactive PDF version</p>
+            </div>
+            <div class="option" onclick="switchView('image')">
+                <i class="fas fa-image"></i>
+                <h3>Image Version</h3>
+                <p>View as image</p>
+            </div>
+        </div>
+
+        <div class="resume-content">
+            <div class="resume-view active" id="pdf-view">
+                <embed src="assets/resume.pdf" type="application/pdf" class="resume-pdf">
+            </div>
+            <div class="resume-view" id="image-view">
+                <img src="assets/resume.png" alt="Resume" class="resume-image">
+            </div>
+        </div>
+
+        <div class="buttons-container">
+            <a href="assets/resume.pdf" download class="download-button">
+                <i class="fas fa-download"></i>
+                Download Resume
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function switchView(type) {
+            // Update options
+            document.querySelectorAll('.option').forEach(option => {
+                option.classList.remove('active');
+            });
+            document.querySelector(`.option[onclick="switchView('${type}')"]`).classList.add('active');
+
+            // Update view
+            document.querySelectorAll('.resume-view').forEach(view => {
+                view.classList.remove('active');
+            });
+            document.getElementById(`${type}-view`).classList.add('active');
+        }
+    </script>
+</body>
+</html>
