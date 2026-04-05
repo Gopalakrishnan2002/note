@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: antiquewhite;
+}
+
+
+#aa{
+    color: red;
+    padding-left: 250px;
+}
+
+#bb{
+    color: blue;
+     padding-left: 450px;
+    
+}
+
+#cc{
+    color:green;
+      padding-left: 550px;
+}
+
+a{
+     padding-left: 580px;
+    text-decoration: none;
+}
+
+img{
+    margin-top: 20px;
+   padding-left: 450px;
+}

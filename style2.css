@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    background-color: aqua;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+header>p{
+    flex-direction: row;
+    align-items: end;
+    justify-content: end;
+    align-content: end;
+    color: red;
+}
+ span{
+    color: red;
+ }
+.images{
+    display: grid;
+    gap: 5px;
+    grid-auto-flow: column;
+    grid-auto-columns: 18rem;
+    justify-content: stretch;
+    animation: rolling 10s linear infinite;
+}
+
+button{
+    margin-left: 550px;
+}
+
+@keyframes rolling{
+    to{
+        translate: calc(-10*18rem);
+    }
+}
+  
+
+
